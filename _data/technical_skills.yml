@@ -1,0 +1,12 @@
+categories:
+  - name: "Languages/Tools"
+    skills: ["Python", "C", "C++", "Bash", "Git", "Linux", "SQL", "Java", "JavaScript"]
+  
+  - name: "ML/NLP"
+    skills: ["PyTorch", "HuggingFace Transformers", "NumPy", "Pandas", "scikit-learn"]
+  
+  - name: "Eval/Visualization"
+    skills: ["Matplotlib", "Seaborn"]
+  
+  - name: "Web/Data"
+    skills: ["Flask", "React", "SQLAlchemy", "MongoDB", "HTML/CSS", "Postman", "Docker", "Asterisk (PBX)"]

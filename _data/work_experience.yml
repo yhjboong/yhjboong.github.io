@@ -1,0 +1,44 @@
+- position: "Co-founder / CTO"
+  company: "FORGED"
+  location: "Remote"
+  period: "Jun 2025 -- Present"
+  achievements:
+    - "Designed a product–data platform for nutrition and supplements: established a normalized taxonomy, represented each brand as a single JSON record, and built loaders into a NoSQL document database."
+    - "Defined image/asset conventions and a hierarchical ID scheme to support multi-flavor/multi-size variants and enable reliable lookups."
+    - "Leveraged OCR and LLMs to extract and enrich ingredient lists, adding caution/allergen tags; implemented a comparison API (price per serving, cost per 30g protein, macro differences)."
+    - "Increased reliability of pipelines with schema validation, CI checks, structured logging, and zero-downtime index updates."
+
+- position: "Backend Developer"
+  company: "Tweeds"
+  location: "Remote"
+  period: "Jan 2025 -- May 2025"
+  achievements:
+    - "Extended MongoDB schemas with indexed fields for secure third-party credential storage; enabled scalable multi-platform API support."
+    - "Built resilient service layers for TikTok integrations (asynchronous job handling, unified logs, robust error handling)."
+    - "Designed an automated test harness simulating end-to-end user flows (credential validation, upload, polling) to streamline QA."
+    - "Created reusable user seeding scripts and centralized API logging (Winston) for the AI detection pipeline to improve traceability."
+
+- position: "Software Engineer Intern"
+  company: "Quantum AI"
+  location: "Seoul, South Korea"
+  period: "May 2023 -- Jul 2023"
+  achievements:
+    - "Prototyped a voice-based customer support system; scoped requirements and MVP with cross-functional teams."
+    - "Deployed an Asterisk PBX in Docker and connected a Python service with speech-to-text and text-to-speech using a standardized Q&A dataset."
+    - "Implemented a multithreaded server and load balancer to handle higher interaction volumes and distribute requests."
+    - "Built an admin tool for agent management and analytics to enable data-driven operations."
+
+- position: "Software Engineer Intern"
+  company: "Garbage Collector"
+  location: "Seoul, South Korea (Remote)"
+  period: "Dec 2022 -- Feb 2023"
+  achievements:
+    - "Initialized a Spring (Kotlin) project for new product versions; co-designed and implemented REST APIs."
+    - "Tested endpoints with Postman and maintained QA reports; contributed to service models and product direction."
+
+- position: "Sergeant, Reconnaissance Troop (55th Brigade, 22nd Infantry Division)"
+  company: "Republic of Korea Army"
+  location: "Goseong, Gangwon, South Korea"
+  period: "Jul 2020 -- Jan 2022"
+  achievements:
+    - "Served at a DMZ guard post; developed leadership and cross-functional teamwork under pressure."

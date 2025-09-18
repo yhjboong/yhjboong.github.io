@@ -1,0 +1,15 @@
+- organization: "CS for Good"
+  institution: "University of Notre Dame"
+  location: "Notre Dame, IN"
+  position: "Team Leader – Faith in Indiana Team / The Family Connection Team"
+  period: "Jan 2022 -- May 2023"
+  activities:
+    - "Collected business-fair data with Python and automated event setup using Eventbrite/Zapier/Canva."
+
+- organization: "O'Neill Family Hall"
+  institution: "University of Notre Dame"
+  location: "Notre Dame, IN"
+  position: "Coding Tutor for Students"
+  period: "Aug 2022 -- Dec 2024"
+  activities:
+    - "Provided one-on-one and small group tutoring in introductory programming courses, helping peers strengthen coding fundamentals."

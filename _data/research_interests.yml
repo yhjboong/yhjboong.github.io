@@ -1,0 +1,6 @@
+- area: "LLM Reasoning and Verification"
+  topics:
+    - "Hallucination remediation and interpretability"
+    - "Evaluation methodology across benchmarks (validity, reliability, robustness)"
+    - "Human-computer interaction (HCI) for evaluation and Human-AI collaboration"
+    - "Dataset quality, measurement and value alignment"
