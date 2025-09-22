@@ -33,6 +33,16 @@ I'm currently working on several cutting-edge projects:
 - **Web Agent Evaluation** (SaNDwich Lab): Creating trajectory-level evaluation systems that go beyond simple success metrics to assess value alignment
 - **Benchmark Harmonization** (FORESEER Lab): Standardizing and improving cross-benchmark comparisons in AI evaluation
 
+Fun Facts About Me
+======
+- Served in the 22nd Infantry Division, 55th Brigade, Reconnaissance Company during military service in Korea
+- Represented South Korea as a member of the U20 National Lacrosse Team
+- A dedicated gym rat — works out almost every day when feeling good
+- At Notre Dame, proudly part of the 3B section, where friends nicknamed me "Jenko" (after the character from *21 Jump Street*, since I joined after completing military service)
+- Loves kimchi stew
+- Enjoys tanning
+- Big fan of matcha lattes
+
 Contact
 ======
 Feel free to reach out if you're interested in collaborating or discussing research ideas:
