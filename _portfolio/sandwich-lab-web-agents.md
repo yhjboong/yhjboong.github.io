@@ -7,37 +7,36 @@ share: false
 
 ## Project Overview
 
-At the SaNDwich Lab, a collaboration between IBM and the University of Notre Dame, I'm working under [Prof. Toby Jia-Jun Li](https://toby.li/) to revolutionize how we evaluate web agents. Rather than simple success/failure metrics, we're developing trajectory-level evaluation that assesses the quality and value alignment of entire action sequences.
+At the SaNDwich Lab, a collaboration between IBM and the University of Notre Dame, I'm working under [Prof. Toby Jia-Jun Li](https://toby.li/) to revolutionize how we evaluate web agents. Rather than simple success/failure metrics, we're developing trajectory-level evaluation that assesses the quality and value alignment of entire action sequences in web automation tasks.
 
-## Key Innovations
+## Key Contributions
 
-### Trajectory-Level Evaluation
-- **Beyond binary success metrics** - scoring action sequences, not only end success
-- **Value alignment assessment** - encoding user preferences (vegan, budget-conscious) and tracking adherence
-- **Separate reasoning tracks** - logging value reasoning separately from action reasoning
+- **Developed trajectory-level evaluation framework** for scoring action sequences, not only end success
+- **Created controlled replica testbeds** for retail, maps, and flight booking scenarios to avoid anti-bot drift
+- **Implemented standardized browser automation** using browser-use framework (screenshots + DOM)
+- **Encoded user values** (e.g., vegan, budget-conscious) and logged value reasoning separately from action reasoning
+- **Added completion-page checks** to prevent false continuation and improve evaluation accuracy
+- **Instrumented various factors** including API vs. end-to-end performance analysis
+- **Analyzed environmental variables** such as recommender settings, pricing frames, and deceptive ads
 
-### Controlled Testing Environment
-- **Created replica testbeds** for retail, maps, and flight booking scenarios
-- **Standardized browser automation** using browser-use framework (screenshots + DOM)
-- **Avoided anti-bot drift** through controlled environments for reproducible evaluations
+## Technical Skills Demonstrated
 
-### Comprehensive Instrumentation
-- **Completion-page checks** to prevent false continuation
-- **Multi-factor analysis** including API vs. end-to-end performance
-- **Environmental variables** such as recommender settings, pricing frames, and deceptive ads
-
-## Technical Implementation
-- Browser automation using screenshots and DOM manipulation
-- Controlled environment replication for major web platforms
-- Value encoding and preference tracking systems
-- Comprehensive logging and analysis pipelines
+- **Browser automation** using screenshots and DOM manipulation frameworks
+- **Controlled environment replication** for major web platforms and services
+- **Value encoding systems** and preference tracking for ethical AI evaluation
+- **Comprehensive logging** and analysis pipelines for complex behavioral data
+- **Multi-factor experimental design** for robust evaluation methodology
+- **Human-AI interaction** principles and evaluation framework development
 
 ## Impact and Applications
-This framework enables more sophisticated evaluation of web agents across various domains:
-- E-commerce platforms with budget and preference constraints
-- Travel booking with personal preferences and restrictions
-- Navigation systems with accessibility requirements
-- General web automation with ethical considerations
+
+This framework enables more sophisticated evaluation of web agents across various domains and has practical applications in:
+- **E-commerce platforms** with budget and preference constraints
+- **Travel booking systems** with personal preferences and accessibility requirements
+- **Navigation systems** with user-specific needs and restrictions
+- **General web automation** with ethical considerations and value alignment
+- **Human-AI collaboration** assessment in real-world scenarios
 
 ## Publication Status
-This work is being prepared for submission to IUI 2026, where it will contribute to advancing the field of human-AI interaction and web automation evaluation.
+
+This work is being prepared for submission to IUI, where it will contribute to advancing the field of human-AI interaction and web automation evaluation methodologies.

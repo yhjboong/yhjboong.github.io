@@ -4,8 +4,8 @@ collection: publications
 category: manuscripts
 excerpt: 'A comprehensive framework for trajectory-level evaluation of web agents that goes beyond simple success metrics to assess value alignment and action sequences.'
 date: 2025-01-01
-venue: 'IUI 2026 (in preparation)'
-citation: 'Gebreegziabher, S., Yang, Y., Chiang, C., Chen, C., Yoo, H., Geyer, W., Gomez-Zara, D., Li, T. J.-J. (2025). Evaluating Web Agents via Trajectories & Value Alignment. In preparation for IUI 2026.'
+venue: 'Submitting to IUI'
+citation: 'Gebreegziabher, S., Yang, Y., Chiang, C., Chen, C., Yoo, H., Geyer, W., Gomez-Zara, D., Li, T. J.-J. (2025). Evaluating Web Agents via Trajectories & Value Alignment. Submitting to IUI.'
 ---
 
 **Status**: In preparation (co-author)

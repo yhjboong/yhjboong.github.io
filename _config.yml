@@ -23,7 +23,7 @@ repository               : "yhjboong/yhjboong.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpeg"
   name             : "Hojun (Dan) Yoo"
   pronouns         : # example: "she/her"  
   bio              : "Computer Science undergraduate at Notre Dame researching LLM reasoning, verification, and human-AI collaboration"

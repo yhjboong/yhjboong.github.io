@@ -7,55 +7,42 @@ share: false
 
 ## Project Overview
 
-At the FORESEER Lab (University of Michigan), under the supervision of [Prof. Qiaozhu Mei](https://www.si.umich.edu/people/qiaozhu-mei), I'm working on a critical challenge in AI evaluation: harmonizing diverse benchmarks to enable principled cross-benchmark comparison and understanding model relationships.
+At the FORESEER Lab (University of Michigan), under the supervision of [Prof. Qiaozhu Mei](https://www.si.umich.edu/people/qiaozhu-mei), I'm working on a critical challenge in AI evaluation: harmonizing diverse benchmarks to enable principled cross-benchmark comparison and understanding model relationships across different evaluation frameworks.
 
-## Key Achievements
+## Key Contributions
 
-### Benchmark Harmonization
-- **Unified three major benchmarks**: LiveBench, HELM, and LMSYS Arena
-- **Standardized model identifiers** across different evaluation frameworks
-- **Deduplicated variants** and retained latest versions per model–objective pair
+- **Unified three major benchmarks**: LiveBench, HELM, and LMSYS Arena into a coherent evaluation framework
+- **Standardized model identifiers** across different evaluation frameworks for consistent comparison
+- **Deduplicated variants** and retained latest versions per model–objective pair for clean analysis
 - **Enabled principled cross-benchmark comparison** for the first time at this scale
-
-### Model Similarity Analysis
-- **Constructed comprehensive similarity maps** using multidimensional scaling (MDS)
-- **Implemented centrality analysis** to identify key models and relationships
-- **Reported rigorous fit metrics** including raw stress and Stress-1 measurements
-- **Verified stability** under injected noise and sub-sampling conditions
-
-### Evaluation Optimization
+- **Constructed comprehensive similarity maps** using multidimensional scaling (MDS) techniques
+- **Implemented centrality analysis** to identify key models and relationships in the evaluation space
+- **Reported rigorous fit metrics** including raw stress and Stress-1 measurements for validation
+- **Verified stability** under injected noise and sub-sampling conditions for robustness
 - **Diagnosed sources of misalignment** between different evaluation approaches
 - **Proposed compact task subsets** that preserve similarity structure while reducing computational cost
-- **Developed methodologies** for efficient benchmark subset selection
 
-## Technical Contributions
+## Technical Skills Demonstrated
 
-### Data Processing
-- Cross-platform model ID standardization
-- Variant deduplication algorithms
-- Multi-benchmark data alignment and validation
+- **Cross-platform data integration** and model ID standardization across diverse systems
+- **Variant deduplication algorithms** for large-scale dataset cleaning and processing
+- **Multi-benchmark data alignment** and validation techniques for complex datasets
+- **Multidimensional scaling implementation** and optimization for high-dimensional analysis
+- **Statistical stress metric calculation** and interpretation for dimensionality reduction
+- **Noise injection protocols** and stability testing for robust experimental validation
+- **Interactive data visualization** development for model similarity and relationships
+- **Meta-analysis methodology** for evaluation framework comparison and optimization
 
-### Statistical Analysis
-- Multidimensional scaling implementation and optimization
-- Stress metric calculation and interpretation
-- Noise injection and stability testing protocols
+## Impact and Applications
 
-### Visualization and Interpretation
-- Interactive model similarity visualizations
-- Centrality-based model importance rankings
-- Benchmark alignment diagnostic tools
+This research addresses fundamental challenges in AI evaluation and provides practical benefits:
+- **Reduces evaluation costs** while maintaining assessment quality through efficient subset selection
+- **Enables meta-analysis** across previously incompatible benchmarks for broader insights
+- **Provides insights** into model relationships and evaluation redundancies across the field
+- **Guides future benchmark development** through systematic analysis of existing frameworks
+- **Supports model selection** and comparison through comprehensive similarity analysis
+- **Improves evaluation standardization** across the AI research community
 
-## Research Impact
+## Research Significance
 
-This work addresses fundamental challenges in AI evaluation:
-- **Reduces evaluation costs** while maintaining assessment quality
-- **Enables meta-analysis** across previously incompatible benchmarks  
-- **Provides insights** into model relationships and evaluation redundancies
-- **Guides future benchmark development** through systematic analysis
-
-## Methodological Innovations
-- Novel approaches to cross-benchmark standardization
-- Robust statistical validation of similarity structures
-- Practical frameworks for evaluation cost reduction
-
-This research contributes to making AI evaluation more efficient, standardized, and scientifically rigorous across the field.
+This work contributes to making AI evaluation more efficient, standardized, and scientifically rigorous across the field. The methodological innovations in cross-benchmark standardization and robust statistical validation of similarity structures provide a foundation for future evaluation research and practical frameworks for evaluation cost reduction in both academic and industrial settings.
