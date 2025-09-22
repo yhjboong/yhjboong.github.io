@@ -33,7 +33,7 @@ I'm currently working on several cutting-edge projects:
 - **Web Agent Evaluation** (SaNDwich Lab): Creating trajectory-level evaluation systems that go beyond simple success metrics to assess value alignment
 - **Benchmark Harmonization** (FORESEER Lab): Standardizing and improving cross-benchmark comparisons in AI evaluation
 
-Fun Facts About Me
+<!-- Fun Facts About Me
 ======
 - Served in the 22nd Infantry Division, 55th Brigade, Reconnaissance Company during military service in Korea
 - Represented South Korea as a member of the U20 National Lacrosse Team
@@ -42,6 +42,7 @@ Fun Facts About Me
 - Loves kimchi stew
 - Enjoys tanning
 - Big fan of matcha lattes
+-->
 
 Contact
 ======
