@@ -16,8 +16,7 @@ Currently, I'm conducting research across multiple prestigious institutions:
 
 My work combines theoretical foundations with practical applications, contributing to research manuscripts currently under submission.
 
-Research Interests
-======
+## Research Interests
 My research focuses on **LLM reasoning and verification**, specifically:
 
 1. **Hallucination remediation and interpretability** - Developing methods to identify and correct false information in large language models
@@ -25,16 +24,14 @@ My research focuses on **LLM reasoning and verification**, specifically:
 3. **Human-computer interaction (HCI)** - Designing effective evaluation systems and fostering Human-AI collaboration
 4. **Dataset quality, measurement and value alignment** - Improving the foundation of AI training and evaluation data
 
-Recent Work
-======
+## Recent Work
 I'm currently working on several cutting-edge projects:
 
 - **Meaning-Removed Steering Vectors** (MINE Lab): Developing novel techniques for calibrating LLM reasoning through sentence-level hidden-state interventions
 - **Web Agent Evaluation** (SaNDwich Lab): Creating trajectory-level evaluation systems that go beyond simple success metrics to assess value alignment
 - **Benchmark Harmonization** (FORESEER Lab): Standardizing and improving cross-benchmark comparisons in AI evaluation
 
-<!-- Fun Facts About Me
-======
+## Fun Facts About Me
 - Served in the 22nd Infantry Division, 55th Brigade, Reconnaissance Company during military service in Korea
 - Represented South Korea as a member of the U20 National Lacrosse Team
 - A dedicated gym rat — works out almost every day when feeling good
@@ -42,10 +39,4 @@ I'm currently working on several cutting-edge projects:
 - Loves kimchi stew
 - Enjoys tanning
 - Big fan of matcha lattes
--->
 
-Contact
-======
-Feel free to reach out if you're interested in collaborating or discussing research ideas:
-- **Email**: [hyoo@nd.edu](mailto:hyoo@nd.edu)
-- **LinkedIn**: [linkedin.com/in/danhojunyoo](https://www.linkedin.com/in/danhojunyoo)

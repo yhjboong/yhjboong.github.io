@@ -4,7 +4,8 @@ collection: publications
 category: manuscripts
 excerpt: 'We demonstrate that sentence-level hidden-state interventions substantially improve reflective reasoning while minimally affecting transition and execution behaviors through meaning-removed control vectors.'
 date: 2025-01-01
-venue: 'Submitting to EACL'
+venue: 'EACL'
+status: submitted
 citation: 'Yoo, H.*, Zhuang, H.* (2025). Meaning-Removed Steering Vectors for Calibrating LLM Reasoning. Submitting to EACL.'
 ---
 
