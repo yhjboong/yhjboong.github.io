@@ -22,12 +22,13 @@
     height: 1px;
     background: var(--global-border-color);
     width: 100%;
+    opacity: 0.5;
   }
 
   &__inner-wrap {
     @include container;
     @include clearfix;
-    padding: 0.5em 1em;
+    padding: 0.75em 1.25em;
     font-family: $sans-serif-narrow;
 
     @include breakpoint($x-large) {
@@ -61,7 +62,7 @@
   white-space: nowrap;
 
   &--lg {
-    padding-right: 2em;
-    font-weight: 700;
+    padding-right: 2.5em;
+    font-weight: 600;
   }
 }

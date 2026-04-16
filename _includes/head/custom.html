@@ -2,6 +2,11 @@
 
 <!-- start custom head snippets -->
 
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <!-- Support for Academicons -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
@@ -13,5 +18,71 @@
 <link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
+
+<!-- Smooth scrolling with offset for fixed navbar -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Offset anchor targets so they don't hide behind the fixed navbar */
+  h2[id], #about {
+    scroll-margin-top: 80px;
+  }
+  /* Bigger sidebar icons */
+  .author__urls .fa-fw,
+  .author__urls .ai,
+  .author__urls .fab,
+  .author__urls .fas,
+  .author__urls .icon-pad-right {
+    font-size: 1.5em;
+    vertical-align: middle;
+  }
+  .author__urls li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  /* Publication figure responsive */
+  @media (max-width: 600px) {
+    .page__content div[style*="display: flex"] {
+      flex-direction: column;
+    }
+    .page__content div[style*="display: flex"] img {
+      width: 100% !important;
+      min-width: unset !important;
+    }
+  }
+  /* Move sidebar slightly left */
+  @media (min-width: 80em) {
+    .sidebar {
+      padding-left: 0;
+      margin-left: -1em;
+    }
+  }
+</style>
+
+<!-- Smooth scroll for same-page anchor links in navbar -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.greedy-nav a[href*="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      var hash = href.includes('#') ? '#' + href.split('#')[1] : null;
+      if (!hash) return;
+      var path = window.location.pathname.replace(/\/+$/, '');
+      var isHome = path === '' || path === '/index.html';
+      if (isHome || href.startsWith('#')) {
+        var target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          history.pushState(null, null, hash);
+        }
+      }
+    });
+  });
+});
+</script>
 
 <!-- end custom head snippets -->
