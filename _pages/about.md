@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am an incoming Ph.D. student in Computer Science at [Purdue University](https://www.purdue.edu/), advised by [Prof. Jason Wu](https://jasonwunix.com/). I study how people and AI systems interact, how language models reason, and how we can evaluate these systems in ways that reflect human values. I am currently completing my B.S. in Computer Science at the [University of Notre Dame](https://www.nd.edu/), graduating in May 2026.
+I am an incoming PhD student in Computer Science at [Purdue University](https://www.purdue.edu/), advised by [Prof. Jason Wu](https://jasonwunix.com/). I study how people and AI systems interact, how language models reason, and how we can evaluate these systems in ways that reflect human values. I am currently completing my B.S. in Computer Science at the [University of Notre Dame](https://www.nd.edu/), graduating in May 2026.
 
 I have been fortunate to be mentored by **[Prof. Toby Jia-Jun Li](https://toby.li/)** ([SaNDwich Lab](https://toby.li/students/), University of Notre Dame), **[Prof. Xiangliang Zhang](https://engineering.nd.edu/faculty/xiangliang-zhang/)** ([MINE Lab](https://sites.nd.edu/xiangliang-zhang/people/), University of Notre Dame), and **[Prof. Qiaozhu Mei](http://www-personal.umich.edu/~qmei/)** ([FORESEER Group](https://umich-foreseer.github.io/), University of Michigan) across projects spanning web agent evaluation, value alignment, reasoning calibration, and benchmark analysis.
 

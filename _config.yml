@@ -12,7 +12,7 @@ site_theme               : "default" # Currently available options are "default"
 title                    : "Dan (Hojun) Yoo"
 title_separator          : "-"
 name                     : &name "Dan (Hojun) Yoo"
-description              : &description "Incoming CS Ph.D. at Purdue | Human-AI Interaction researcher"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Incoming CS PhD at Purdue | Human-AI Interaction researcher"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://yhjboong.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,7 +26,7 @@ author:
   avatar           : "profile.jpeg"
   name             : "Dan (Hojun) Yoo"
   pronouns         : # example: "she/her"  
-  bio              : "Incoming CS Ph.D. at Purdue<br>Senior at Notre Dame<br>Human-AI Interaction researcher"
+  bio              : "Incoming CS PhD at Purdue<br>Senior at Notre Dame<br>Human-AI Interaction researcher"
   location         : "Notre Dame, IN"
   employer         : "University of Notre Dame"
   uri              : # URL

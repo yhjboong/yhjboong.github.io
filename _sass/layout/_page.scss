@@ -14,6 +14,17 @@
   @include breakpoint($x-large) {
     max-width: $x-large;
   }
+
+  // Two-column flexbox layout — centered container
+  @include breakpoint($large) {
+    display: flex;
+    gap: 3em;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3em;
+    padding-right: 3em;
+  }
 }
 
 .page {
@@ -21,6 +32,15 @@
     @include span(10 of 12 last);
     @include prefix(0.5 of 12);
     @include suffix(2 of 12);
+
+    // Override Susy — flexbox handles layout
+    float: none;
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
   }
 
   .page__inner-wrap {
