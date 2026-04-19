@@ -39,12 +39,24 @@ let setTheme = (theme) => {
   }
 };
 
-// Toggle the theme manually
+// Toggle the theme manually with icon animation
 var toggleTheme = () => {
-  const current_theme = $("html").attr("data-theme");
-  const new_theme = current_theme === "dark" ? "light" : "dark";
-  localStorage.setItem("theme", new_theme);
-  setTheme(new_theme);
+  const icon = document.getElementById('theme-icon');
+  icon.classList.add('theme-icon-out');
+
+  setTimeout(() => {
+    const current_theme = $("html").attr("data-theme");
+    const new_theme = current_theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", new_theme);
+    setTheme(new_theme);
+
+    icon.classList.remove('theme-icon-out');
+    icon.classList.add('theme-icon-in');
+
+    setTimeout(() => {
+      icon.classList.remove('theme-icon-in');
+    }, 400);
+  }, 200);
 };
 
 /* ==========================================================================

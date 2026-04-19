@@ -12,12 +12,12 @@ I am an incoming PhD student in Computer Science at [Purdue University](https://
 I have been fortunate to be mentored by **[Prof. Toby Jia-Jun Li](https://toby.li/)** ([SaNDwich Lab](https://toby.li/students/), University of Notre Dame), **[Prof. Xiangliang Zhang](https://engineering.nd.edu/faculty/xiangliang-zhang/)** ([MINE Lab](https://sites.nd.edu/xiangliang-zhang/people/), University of Notre Dame), and **[Prof. Qiaozhu Mei](http://www-personal.umich.edu/~qmei/)** ([FORESEER Group](https://umich-foreseer.github.io/), University of Michigan) across projects spanning web agent evaluation, value alignment, reasoning calibration, and benchmark analysis.
 
 ## Research Interests
-I am broadly interested in **Human-AI Interaction (HAI)**, with a focus on:
+I am broadly interested in **Human-AI Interaction (HAI)**, especially:
 
-1. **Human-AI collaboration and evaluation** - Designing systems that effectively partner humans with AI agents, and developing evaluation frameworks that capture the quality of these interactions beyond simple success metrics
-2. **LLM reasoning and interpretability** - Understanding and calibrating the internal reasoning mechanisms of large language models through causal interventions and steering vectors
-3. **Value alignment and trustworthy AI** - Ensuring AI systems respect user preferences, exhibit transparent decision-making, and align with human values throughout interaction
-4. **Evaluation methodology and benchmarking** - Building rigorous, reproducible evaluation infrastructure that enables fair comparison across AI models and benchmarks
+1. **Human-AI collaboration and evaluation** - Designing systems that help people work effectively with AI agents, and developing evaluation methods that capture interaction quality beyond simple task success
+2. **LLM systems and human-centered implementation** - Developing language model systems that bring AI capabilities into real-world settings in ways that are useful, usable, and grounded in human needs
+3. **LLM reasoning and interpretability** - Understanding, probing, and calibrating the reasoning behavior of language models
+4. **Evaluation methodology and benchmarking** - Creating rigorous and reproducible evaluation frameworks for comparing AI systems and benchmarks
 
 
 ## Publications
