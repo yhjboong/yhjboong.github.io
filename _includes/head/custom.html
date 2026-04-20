@@ -98,7 +98,8 @@
     line-height: 1.4;
   }
   .author__urls a {
-    font-size: 0.9em !important;
+    font-size: inherit !important;
+    transition: none !important;
   }
 
   /* --- Motion & Micro-interactions --- */
@@ -188,8 +189,7 @@
     }
     html, body,
     .masthead, .greedy-nav, .masthead__menu-item,
-    .page__footer, .page__footer-copyright,
-    .author__urls {
+    .page__footer, .page__footer-copyright {
       transition: none !important;
     }
   }
@@ -201,8 +201,7 @@
   .greedy-nav,
   .masthead__menu-item,
   .page__footer,
-  .page__footer-copyright,
-  .author__urls {
+  .page__footer-copyright {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
   }
 

@@ -35,9 +35,6 @@ I am broadly interested in **Human-AI Interaction (HAI)**, especially:
 ## News
 
 - **[Jan 2026]** "[The Behavioral Fabric of LLM-Powered GUI Agents: Human Values and Interaction Outcomes](https://dl.acm.org/doi/pdf/10.1145/3742413.3789219)" accepted at IUI 2026
-- **[Fall 2024]** Dean's List, University of Notre Dame
-- **[Fall 2023]** Dean's List, University of Notre Dame
-- **[Fall 2022]** Dean's List, University of Notre Dame
 
 <!-- ## Awards & Honors
 
