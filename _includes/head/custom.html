@@ -25,9 +25,26 @@
     scroll-behavior: smooth;
   }
 
+  /* Align navbar with main content container */
+  .masthead__inner-wrap {
+    max-width: 1100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 3em !important;
+    padding-right: 3em !important;
+  }
+
   /* Offset anchor targets for fixed navbar */
   h2[id], #about {
     scroll-margin-top: 80px;
+  }
+
+  /* Align both columns at top */
+  .page {
+    padding-top: 0;
+  }
+  .page .page__inner-wrap {
+    padding-top: 0;
   }
 
   /* --- Typography & Content Spacing --- */
@@ -62,6 +79,13 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 1.2em;
+  }
+  /* Hide empty header on homepage */
+  .page__inner-wrap > header:first-child {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
   }
 
   /* --- Sidebar Profile Refinements --- */
