@@ -1,13 +1,13 @@
 ---
 title: "Trajectory-Level Web Agent Evaluation"
-excerpt: "Developing comprehensive evaluation frameworks for web agents that assess both action sequences and value alignment at SaNDwich Lab (IBM–Notre Dame collaboration)."
+excerpt: "Developed evaluation frameworks for web agents that assess both action sequences and value alignment at SaNDwich Lab (IBM–Notre Dame collaboration)."
 collection: portfolio
 share: false
 ---
 
 ## Project Overview
 
-At the SaNDwich Lab, a collaboration between IBM and the University of Notre Dame, I'm working under [Prof. Toby Jia-Jun Li](https://toby.li/) to revolutionize how we evaluate web agents. Rather than simple success/failure metrics, we're developing trajectory-level evaluation that assesses the quality and value alignment of entire action sequences in web automation tasks.
+At the SaNDwich Lab, a collaboration between IBM and the University of Notre Dame, I worked under [Prof. Toby Jia-Jun Li](https://toby.li/) on trajectory-level evaluation of web agents. The project assessed the quality and value alignment of entire action sequences rather than relying only on task success.
 
 ## Key Contributions
 
@@ -39,4 +39,4 @@ This framework enables more sophisticated evaluation of web agents across variou
 
 ## Publication Status
 
-This work is being prepared for submission to IUI, where it will contribute to advancing the field of human-AI interaction and web automation evaluation methodologies.
+This work resulted in two publications at IUI 2026: *The Behavioral Fabric of LLM-Powered GUI Agents: Human Values and Interaction Outcomes* and *EvalAgent: Interactive Comparative Evaluation of Computer-Using GUI Agents* (Demos Track).

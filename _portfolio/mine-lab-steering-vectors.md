@@ -3,6 +3,7 @@ title: "Meaning-Removed Steering Vectors for LLM Reasoning"
 excerpt: "Developing novel techniques for calibrating large language model reasoning through sentence-level hidden-state interventions at MINE Lab, University of Notre Dame."
 collection: portfolio
 share: false
+published: false
 ---
 
 ## Project Overview

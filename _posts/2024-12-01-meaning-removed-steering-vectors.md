@@ -7,6 +7,7 @@ tags:
   - llm reasoning
   - interpretability
   - research
+published: false
 ---
 
 Large Language Models (LLMs) have shown remarkable capabilities in reasoning tasks, but understanding and controlling their internal reasoning processes remains a significant challenge. In my ongoing research at the MINE Lab (University of Notre Dame), I'm working on a novel approach to this problem: **meaning-removed steering vectors**.

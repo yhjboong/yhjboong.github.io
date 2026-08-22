@@ -6,9 +6,9 @@ redirect_from:
   - /about.html
 ---
 
-I am an incoming PhD student in Computer Science at [Purdue University](https://www.purdue.edu/), advised by [Prof. Jason Wu](https://jasonwunix.com/). I study how people and AI systems interact, how language models reason, and how we can evaluate these systems in ways that reflect human values. I am currently completing my B.S. in Computer Science at the [University of Notre Dame](https://www.nd.edu/), graduating in May 2026.
+I am a Ph.D. student in Computer Science at [Purdue University](https://www.purdue.edu/), advised by [Prof. Jason Wu](https://jasonwunix.com/). I study how people and AI systems interact, how language models reason, and how we can evaluate these systems in ways that reflect human values. I received my B.S. in Computer Science, cum laude, from the [University of Notre Dame](https://www.nd.edu/) in May 2026.
 
-I have been fortunate to be mentored by **[Prof. Toby Jia-Jun Li](https://toby.li/)** ([SaNDwich Lab](https://toby.li/students/), University of Notre Dame), **[Prof. Xiangliang Zhang](https://engineering.nd.edu/faculty/xiangliang-zhang/)** ([MINE Lab](https://sites.nd.edu/xiangliang-zhang/people/), University of Notre Dame), and **[Prof. Qiaozhu Mei](http://www-personal.umich.edu/~qmei/)** ([FORESEER Group](https://umich-foreseer.github.io/), University of Michigan) across projects spanning web agent evaluation, value alignment, reasoning calibration, and benchmark analysis.
+Previously, I was mentored by **[Prof. Toby Jia-Jun Li](https://toby.li/)** ([SaNDwich Lab](https://toby.li/students/), University of Notre Dame), **[Prof. Xiangliang Zhang](https://engineering.nd.edu/faculty/xiangliang-zhang/)** ([MINE Lab](https://sites.nd.edu/xiangliang-zhang/people/), University of Notre Dame), and **[Prof. Qiaozhu Mei](http://www-personal.umich.edu/~qmei/)** ([FORESEER Group](https://umich-foreseer.github.io/), University of Michigan) on projects spanning web agent evaluation, value alignment, reasoning calibration, and benchmark analysis.
 
 ## Research Interests
 I am broadly interested in **Human-AI Interaction (HAI)**, especially:
@@ -31,9 +31,21 @@ I am broadly interested in **Human-AI Interaction (HAI)**, especially:
   </div>
 </div>
 
+<div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px; padding: 0.75rem 0;">
+  <div>
+    <strong>EvalAgent: Interactive Comparative Evaluation of Computer-Using GUI Agents</strong><br />
+    Yang, Y., Gebreegziabher, S. A., <u>Yoo, H.</u>, Chiang, C., Chen, C., Szymanski, A., Do, H. J., Ashktorab, Z., Geyer, W., Gómez-Zará, D., Li, T. J.-J.<br />
+    <em>IUI 2026 Companion, Demos Track</em>, pp. 171-175.<br />
+    <a href="https://doi.org/10.1145/3742414.3794774">[DOI]</a>
+  </div>
+</div>
+
 ## News
 
-- **[Jan 2026]** "[The Behavioral Fabric of LLM-Powered GUI Agents: Human Values and Interaction Outcomes](https://dl.acm.org/doi/pdf/10.1145/3742413.3789219)" accepted at IUI 2026
+- **[Aug 2026]** Started my Ph.D. in Computer Science at Purdue University and joined CS 593: Graduate Human-Computer Interaction as a teaching assistant
+- **[May 2026]** Graduated cum laude from the University of Notre Dame with a B.S. in Computer Science
+- **[Mar 2026]** "[EvalAgent: Interactive Comparative Evaluation of Computer-Using GUI Agents](https://doi.org/10.1145/3742414.3794774)" was published in the IUI 2026 Companion Proceedings (Demos Track)
+- **[Mar 2026]** "[The Behavioral Fabric of LLM-Powered GUI Agents: Human Values and Interaction Outcomes](https://dl.acm.org/doi/pdf/10.1145/3742413.3789219)" was published at IUI 2026
 
 <!-- ## Awards & Honors
 

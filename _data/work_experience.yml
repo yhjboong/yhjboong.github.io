@@ -1,17 +1,26 @@
+- position: "Independent Contractor (IC)"
+  company: "Move University"
+  location: "Seoul, South Korea"
+  period: "May 2026 -- Aug 2026"
+  achievements:
+    - "Delivered AI-powered customer acquisition and support workflows that converted customer conversations into validated quotes, service requests, and ERP-ready records."
+    - "Unified pricing and operating rules into auditable, versioned quote engines with deterministic calculations, retrieval guidance, and safeguards."
+    - "Productionized platforms across six codebases with identity verification, payments, media evidence, admin tools, analytics, and automated release gates."
+
 - position: "Co-founder / CTO"
   company: "FORGED"
-  location: "Remote"
-  period: "Jun 2025 -- Present"
+  location: "Notre Dame, IN"
+  period: "Jun 2025 -- May 2026"
   achievements:
     - "Designed a product–data platform for nutrition and supplements: established a normalized taxonomy, represented each brand as a single JSON record, and built loaders into a NoSQL document database."
     - "Defined image/asset conventions and a hierarchical ID scheme to support multi-flavor/multi-size variants and enable reliable lookups."
     - "Leveraged OCR and LLMs to extract and enrich ingredient lists, adding caution/allergen tags; implemented a comparison API (price per serving, cost per 30g protein, macro differences)."
     - "Increased reliability of pipelines with schema validation, CI checks, structured logging, and zero-downtime index updates."
 
-- position: "Backend Developer"
+- position: "Software Engineering Intern"
   company: "Tweeds"
   location: "Remote"
-  period: "Jan 2025 -- May 2025"
+  period: "Nov 2024 -- May 2025"
   achievements:
     - "Extended MongoDB schemas with indexed fields for secure third-party credential storage; enabled scalable multi-platform API support."
     - "Built resilient service layers for TikTok integrations (asynchronous job handling, unified logs, robust error handling)."

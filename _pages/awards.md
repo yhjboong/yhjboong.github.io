@@ -23,19 +23,17 @@ author_profile: true
 
 ## Academic Achievement
 
-### GPA: 3.88/4.0
+### B.S. in Computer Science, cum laude
 * **Institution**: University of Notre Dame
 * **Program**: B.S. in Computer Science
-* **Expected Graduation**: May 2026
+* **GPA**: 3.894/4.0
+* **Graduated**: May 2026
+* **Honor Society**: Tau Beta Pi
 
-## Research Impact
-
-### Co-First Author Publications
-* **EACL 2026** (under submission) - "Meaning-Removed Steering Vectors for Calibrating LLM Reasoning"
-* **Equal contribution** recognition for significant research contributions
+## Research Experience
 
 ### Multi-Institutional Research
-Successfully conducted research across **5 different institutions**:
+Completed research across **three universities and five research groups**:
 - University of Notre Dame (MINE Lab, SaNDwich Lab)
 - University of Michigan (FORESEER Lab)
 - University of Illinois Urbana-Champaign (2 different research groups)
@@ -57,7 +55,7 @@ Successfully conducted research across **5 different institutions**:
 ## Professional Achievements
 
 ### Entrepreneurial Success
-* **Co-founder/CTO** of FORGED (June 2025 - Present)
+* **Co-founder/CTO** of FORGED (June 2025 - May 2026)
 * Successfully launched product-data platform for nutrition and supplements industry
 
 ### Early Career Impact
