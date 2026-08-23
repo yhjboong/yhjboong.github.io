@@ -1,0 +1,2 @@
+# Keep first-party assets on the local origin during preview and browser tests.
+url: http://localhost:4000

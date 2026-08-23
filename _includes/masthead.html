@@ -4,9 +4,8 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Dan Yoo</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/" class="site-title-link">Dan Yoo</a></li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
@@ -15,12 +14,25 @@
             {% endif %}
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
-          <li id="theme-toggle" class="masthead__menu-item persist tail">
-            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
-          </li>
         </ul>
-        <ul class="hidden-links hidden"></ul>
+        <button
+          type="button"
+          data-nav-toggle
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="site-nav-hidden-links"
+        ><span class="navicon" aria-hidden="true"></span></button>
+        <ul id="site-nav-hidden-links" class="hidden-links hidden"></ul>
       </nav>
+      <div id="theme-toggle" class="masthead__menu-item persist tail">
+        <button
+          id="theme-toggle-button"
+          type="button"
+          data-theme-toggle
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        ><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i></button>
+      </div>
     </div>
   </div>
 </div>

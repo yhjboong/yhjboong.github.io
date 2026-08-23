@@ -57,6 +57,7 @@ function updateNav() {
 
   // Keep counter updated
   $btn.attr("count", breaks.length);
+  $btn.attr("aria-expanded", String(!$btn.hasClass("hidden") && !$hlinks.hasClass("hidden")));
 
   // update masthead height and the body/sidebar top padding
   var mastheadHeight = $('.masthead').height();
@@ -74,9 +75,11 @@ function updateNav() {
 $(window).on('resize', function () {
   updateNav();
 });
-screen.orientation.addEventListener("change", function () {
-  updateNav();
-});
+if (screen.orientation) {
+  screen.orientation.addEventListener("change", function () {
+    updateNav();
+  });
+}
 
 $btn.on('click', function () {
   $hlinks.toggleClass('hidden');
@@ -84,3 +87,8 @@ $btn.on('click', function () {
 });
 
 updateNav();
+
+// Web-font metrics can change which links fit after the first layout pass.
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(updateNav);
+}

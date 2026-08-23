@@ -1,251 +1,318 @@
 # Site Architecture & Maintenance Guide
 
-> Last updated: 2026-04-19
+> Last updated: 2026-08-23
 
 ## Overview
 
-Jekyll static site built on **AcademicPages** (fork of Minimal Mistakes).
-Single-page academic portfolio hosted on GitHub Pages at `yhjboong.github.io`.
+This is a Jekyll static academic portfolio based on AcademicPages / Minimal
+Mistakes and hosted with GitHub Pages. The homepage is a compact research
+editorial: one concise hero, three research-interest cards, two selected
+publication cards, and a four-entry news timeline.
 
----
+The homepage content is intentionally limited to completed and public work.
+Do not add papers or projects that are merely planned, in preparation, or under
+review.
 
 ## Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
+| --- | --- |
 | Generator | Jekyll |
 | Theme base | AcademicPages / Minimal Mistakes |
-| CSS | SCSS (Sass) with Susy grid (partially overridden by Flexbox) |
-| Font | Inter (Google Fonts) |
-| Icons | Font Awesome 6, Academicons |
-| JS | jQuery (theme), vanilla JS (custom animations) |
+| CSS | SCSS theme plus homepage overrides in `_includes/head/custom.html` |
+| JavaScript | jQuery, vanilla JavaScript, and the bundled `assets/js/main.min.js` |
+| Browser checks | Playwright |
 | Hosting | GitHub Pages |
 
----
+## Key Files
 
-## Directory Structure (Key Files)
-
-```
-_config.yml                  # Site settings, author info, collections
-_data/navigation.yml         # Navbar links (Research, Publications, News, CV)
+```text
+_config.yml                    Site settings and author profile
+_config.local.yml              Local-origin override for previews and browser checks
+_data/navigation.yml           Main navigation links
 _includes/
-  head/custom.html           # ** Main customization file ** (CSS + JS overrides)
-  masthead.html              # Navbar template
-  author-profile.html        # Sidebar profile template
-  footer.html                # Footer template (simplified)
-  footer/custom.html         # Footer scripts (MathJax, Plotly, Mermaid)
-_layouts/
-  single.html                # Default page layout
-_pages/
-  about.md                   # Homepage content (/ route)
-_sass/
-  layout/
-    _page.scss               # Main content area + #main flexbox container
-    _sidebar.scss            # Sidebar sticky positioning
-    _navigation.scss         # Navbar styles + theme toggle
-    _masthead.scss           # Fixed navbar container
-    _base.scss               # Global transitions, intro animation keyframes
-    _footer.scss             # Footer styles
-  theme/
-    _air_light.scss           # Light theme CSS variables (:root)
-    _air_dark.scss            # Dark theme CSS variables (html[data-theme="dark"])
+  head/custom.html             Homepage component CSS and small page scripts
+  masthead.html                Navigation and theme controls
+  author-profile.html          Sidebar profile and Contact disclosure
+_pages/about.md                Homepage content and semantic component markup
+_sass/layout/                  Theme layout, sidebar, and navigation foundations
+_sass/theme/                   Light and dark theme variables
 assets/js/
-  _main.js                   # Theme toggle, Plotly, smooth scroll, sticky footer
-images/
-  profile.jpeg               # Sidebar avatar
-  pub/                       # Publication figures
-  favicon.*                  # Favicons
+  _main.js                     Theme, disclosures, motion preference, sticky footer
+  main.min.js                  Generated browser bundle
+files/Dan_Yoo_CV.pdf           Locally hosted public CV used by all CV links
+images/pub/                    Local publication figures
 tests/
-  sidebar-overlap.spec.ts    # Playwright test for layout overlap
-playwright.config.ts         # Playwright config (localhost:4000)
+  homepage-ui.spec.ts          Homepage, responsive, theme, and accessibility contract
+  sidebar-overlap.spec.ts      Desktop sidebar/content overlap regression
+playwright.config.ts           Playwright configuration (`localhost:4000`)
 ```
 
----
+## Layout
 
-## Layout System
+The page shell is a centered flex container at the `$large` breakpoint:
 
-### Previous (Broken)
-- Susy grid (`span(2 of 12)`, `span(10 of 12)`) + `position: fixed` sidebar
-- Caused overlap at 1024-1100px viewports, impossible to center naturally
-
-### Current (Flexbox)
-All layout logic lives in `_page.scss` and `_sidebar.scss`:
-
-```
-#main (flex container)
-  max-width: 1100px, margin: 0 auto
-  padding: 3em horizontal
-  gap: 3em
-  |
-  +-- .sidebar (flex-shrink: 0)
-  |     width: 250px ($sidebar-link-max-width)
-  |     position: sticky
-  |     top: calc(masthead-height + 1.5em)
-  |
-  +-- .page (flex: 1, min-width: 0)
+```text
+#main
+├── .sidebar    fixed-width, sticky profile at 925px and wider
+└── .page       flexible content column with min-width: 0
 ```
 
-Susy `@include span()` rules are still present for sub-`$large` fallback, but overridden at `$large+` breakpoint by:
-- `float: none; width: auto/250px; flex: 1;`
+| Width | Expected behavior |
+| --- | --- |
+| Below 925px | Single-column page and Contact disclosure button |
+| 925px and wider | Sticky 250px sidebar plus flexible page content |
+| 1100px and wider | Publication figure and copy appear side by side |
+| 700px and narrower | News date/content stack; compact horizontal padding |
+| 380px and narrower | Hero actions become a full-width vertical stack |
 
-### Breakpoints
-| Variable | Value | Purpose |
-|----------|-------|---------|
-| `$large` | 925px | Two-column layout activates |
-| `$x-large` | 1280px | Max-width cap |
-| `$masthead-height` | 70px | Sticky sidebar offset |
-| `$sidebar-link-max-width` | 250px | Sidebar width |
+The research grid uses `repeat(auto-fit, minmax(190px, 1fr))`; it forms three
+columns when space permits and naturally collapses without hard-coded device
+widths. Every component must keep `min-width: 0` where long paper titles or URLs
+could otherwise create horizontal overflow.
 
----
+## Homepage Component Contract
 
-## Customizations in `custom.html`
+The selectors below are both styling hooks and the browser-test contract. Keep
+them stable when editing copy or adding content.
 
-This file is the central place for all non-SCSS overrides. It contains:
+### Hero
 
-### 1. Typography & Content Spacing
-- `.page__content` line-height: 1.75
-- h2: 1.4em, 600 weight, 2.5em top margin
-- Lists: 0.6em item spacing
-- `.page__title`: 1.8em, 700 weight
-
-### 2. Sidebar Profile Refinements
-- Avatar: 180px max, no border, subtle shadow
-- Name: 1.15em, 600 weight
-- Bio: `color: var(--global-link-color)` (hyperlink color in both light/dark)
-- Icons: 1.35em, 0.7 opacity baseline
-- Links: 0.9em font size
-
-### 3. Motion & Micro-interactions
-| Effect | Selector | Animation |
-|--------|----------|-----------|
-| Social link hover | `.author__urls li` | `translateY(-2px)`, icon opacity to 1 |
-| Publication card hover | `.pub-card` (added via JS) | `translateY(-3px)`, box-shadow |
-| News stagger reveal | `.reveal-item` (added via JS) | fade-in + slide-up, 0.08s stagger per item |
-| Heading underline | `.animate-underline` (added via JS) | `scaleX(0->1)` left-to-right, cubic-bezier |
-
-### 4. Theme Transition
-- Background/color/border transitions on `html, body, .masthead, .greedy-nav, .masthead__menu-item, .page__footer, .author__urls`
-- Duration: 0.4s ease
-- Icon animation: rotate+scale out (0.25s) -> rotate+scale in with bounce (0.4s, cubic-bezier overshoot)
-
-### 5. Accessibility
-- `@media (prefers-reduced-motion: reduce)` disables all custom animations
-- All transitions set to `none !important`
-- Reveal items shown immediately (`opacity: 1, transform: none`)
-
-### 6. Responsive
-- `@media (max-width: 600px)`: publication flex cards stack vertically
-
----
-
-## Theme (Light / Dark Mode)
-
-### How it works
-1. Page load: JS checks `localStorage("theme")` -> falls back to OS `prefers-color-scheme`
-2. Sets `data-theme="dark"` on `<html>` (or removes it for light)
-3. CSS variables in `:root` (light) and `html[data-theme="dark"]` (dark) take effect
-4. Icon swaps between `fa-sun` / `fa-moon`
-
-### Key files
-- `_sass/theme/_air_light.scss` - Light mode variables (`:root`)
-- `_sass/theme/_air_dark.scss` - Dark mode variables (`html[data-theme="dark"]`)
-- `assets/js/_main.js` - `toggleTheme()`, `setTheme()`, `determineComputedTheme()`
-
-### Toggle animation (in `_main.js`)
-```
-Click -> add .theme-icon-out (rotate 90deg + scale 0, 200ms)
-      -> swap theme + icon class
-      -> add .theme-icon-in (rotate -90deg->0 + scale 0->1, bounce easing, 400ms)
-      -> remove .theme-icon-in
-```
-
----
-
-## JavaScript (custom.html)
-
-### Smooth Scroll
-Intercepts navbar anchor clicks (`#research-interests`, `#publications`, `#news`).
-Only activates on homepage. Uses native `scrollIntoView({ behavior: 'smooth' })`.
-
-### IntersectionObserver
-Single observer instance handles:
-- **h2 headings**: adds `.animate-underline` class, triggers `.is-visible` on scroll
-- **News `<li>` items**: adds `.reveal-item` with staggered `transitionDelay`, triggers `.is-visible`
-- **Publication cards**: adds `.pub-card` class (hover effect only, no scroll trigger)
-
-Observer config: `{ threshold: 0.15, rootMargin: '0px 0px -30px 0px' }`
-
-### JSON-LD
-Structured data for SEO: WebSite schema with name variants.
-
----
-
-## Navigation
-
-Defined in `_data/navigation.yml`:
-- Research -> `/#research-interests`
-- Publications -> `/#publications`
-- News -> `/#news`
-- CV -> Google Drive link (external)
-
-All internal links are same-page anchors using smooth scroll.
-
----
-
-## Footer
-
-Simplified to copyright + attribution only.
-"FOLLOW" section and "Site last updated" line removed.
-Template: `_includes/footer.html`
-
----
-
-## Content Updates
-
-### Adding a publication
-In `_pages/about.md`, add a new `<div>` block under `## Publications`:
 ```html
-<div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
-  <img src="/images/pub/YEAR-VENUE-short-name.jpeg" alt="..." style="width: 180px; min-width: 180px; border: 1px solid #ddd; border-radius: 4px;" />
-  <div>
-    <strong>Paper Title</strong><br />
-    Author list with <u>Yoo, H.</u> underlined<br />
-    <em>Venue Year</em>, pp. X-Y.<br />
-    <a href="URL">[PDF]</a>
-  </div>
-</div>
+<header class="home-hero" aria-labelledby="home-hero-title">
+  <h1 id="home-hero-title">...</h1>
+  <nav class="home-hero__actions" aria-label="Profile actions">...</nav>
+</header>
 ```
-The JS will automatically add `.pub-card` for hover effect.
 
-### Adding a news item
-Add a new `- **[Date]**` line under `## News`.
-The JS will automatically apply stagger reveal animation.
+- The page has exactly one `<h1>`.
+- `.home-hero__actions` contains named links for Publications, CV, and email.
+- Use a link for navigation or a download; do not style a scripted action as a link.
+- Keep the summary compact so the selected work remains near the first viewport.
 
-### Updating CV link
-Edit `_data/navigation.yml`, change the `url` for the CV entry.
+### Research Interests
 
-### Updating profile info
-Edit `_config.yml` under `author:` section. Requires Jekyll restart.
+```text
+#research-interests.home-section
+└── .research-grid
+    └── article.research-card × 3
+```
 
----
+Each card has one `<h3>` and a one- or two-sentence explanation. Maintain exactly
+three cards unless the visual and Playwright contracts are deliberately revised
+together.
+
+### Publications
+
+```text
+#publications.home-section
+└── .publication-grid
+    └── article.publication-card
+        ├── figure.publication-card__figure
+        │   ├── image/frame
+        │   └── source/licence attribution
+        └── .publication-card__body
+            ├── .publication-card__venue
+            ├── h3
+            ├── summary and authors
+            └── .publication-card__links
+```
+
+The current homepage intentionally contains two selected publications. Each card
+must have one locally hosted main figure under `images/pub/`. Use the figure that
+best communicates the paper's main contribution, not a screenshot of the paper's
+first page.
+
+For every figure:
+
+- Set intrinsic `width` and `height` so the browser reserves space before load.
+- Keep the source local (`/images/...`) and use a web-sized format.
+- Write alt text that conveys the figure's essential meaning; generic text such as
+  “paper figure” is not sufficient.
+- Keep visible figure/source and licence attribution when required.
+- Use `loading="lazy"` and `decoding="async"` for below-the-fold figures.
+- Preserve the card's figure/body class names when changing markup.
+
+Use `.publication-card__links` for clear, separately named `Paper` and `DOI`
+links. Verify every DOI against the publisher page before changing it.
+
+### News Timeline
+
+```text
+#news.home-section
+└── ol.news-timeline
+    └── li.news-timeline__item
+        ├── time[datetime="YYYY-MM"]
+        └── .news-timeline__content
+```
+
+Keep reverse chronological order. Dates must remain visible text and use a
+machine-readable `datetime="YYYY-MM"`. The line and dots are decorative CSS, not
+content. The current test contract expects four entries.
+
+## Interactive and Accessibility Behavior
+
+### Contact disclosure
+
+The responsive Contact control is a native button with
+`data-contact-toggle`, `aria-controls="author-contact-links"`, and a truthful
+`aria-expanded` value. On narrow screens, Enter and Space open or close the
+controlled list. On desktop, the list remains visible and the disclosure state
+is reset. Escape closes an open disclosure from either the button or its menu
+and returns focus to the Contact button.
+
+### Priority navigation
+
+The compact-navigation control is a native button with `data-nav-toggle`, an
+accessible label, `aria-controls="site-nav-hidden-links"`, and synchronized
+`aria-expanded`. Items moved by the greedy-navigation script remain ordinary
+links. Enter and Space operate the button; Escape closes an open overflow menu
+from the button or one of its links and returns focus to the toggle. The layout
+is recalculated after web fonts finish loading so a cold load cannot leave a
+stale hamburger.
+
+### Theme control
+
+The theme switch is a native button marked with `data-theme-toggle`.
+
+1. `localStorage.theme` stores `light` or `dark` after an explicit choice.
+2. With no explicit choice, the OS `prefers-color-scheme` value is used.
+3. Dark mode sets `html[data-theme="dark"]`; light mode removes that attribute.
+4. `aria-pressed="true"` means dark is active, and the accessible label describes
+   the action that will occur next.
+5. The `meta[name="theme-color"]` value changes with the computed theme.
+
+Do not attach theme behavior to an anchor or icon. The icon is decorative and
+must stay hidden from assistive technology.
+
+### Keyboard focus and touch targets
+
+Links, buttons, and explicit tabindex targets receive a high-contrast
+`:focus-visible` outline. Do not remove it. Primary controls are at least 44px
+tall; smaller inline paper links must still meet the 24×24 CSS-pixel WCAG 2.2
+minimum or have sufficient spacing.
+
+### Reduced motion
+
+When `prefers-reduced-motion: reduce` is active:
+
+- `html` uses `scroll-behavior: auto`.
+- Cards and social links do not translate on hover.
+- reveal content starts fully visible.
+- heading and theme-icon animations are disabled.
+- JavaScript skips smooth-scroll and fading branches.
+
+Reduced motion is progressive enhancement, not a separate content state: all
+research cards, publication cards, and news entries must remain present and
+readable.
+
+## Theme and Component Styling
+
+Light/dark component tokens are declared in `_includes/head/custom.html`:
+
+- `--card-surface` and `--card-surface-strong`
+- `--card-border` and `--card-shadow`
+- `--accent-soft`
+- `--focus-ring`
+
+Prefer these variables and the existing global theme variables over fixed colors.
+The publication figure itself intentionally uses a white canvas because its
+paper graphics were authored for a light background; its attribution color must
+retain readable contrast on that canvas.
+
+## Content Maintenance
+
+### Add or replace a publication
+
+1. Confirm the work is published and public.
+2. Place an optimized main figure in `images/pub/`.
+3. Add one `.publication-card` to `_pages/about.md` using the component contract.
+4. Include venue, title, one-sentence contribution, complete author list, Paper
+   and DOI links, intrinsic image dimensions, descriptive alt text, and source/
+   licence attribution.
+5. Update the expected card count in `tests/homepage-ui.spec.ts` only when the
+   editorial decision to show more than two selected works is intentional.
+
+### Update research interests
+
+Edit only the heading and short copy within `.research-card`. Keep the three-card
+information architecture unless the layout and tests are revised together.
+
+### Add or replace news
+
+Add a `.news-timeline__item` in reverse chronological order. Use `<time>` with a
+valid `YYYY-MM` `datetime` value and concise visible month/year text. Keep only
+high-signal milestones; when retaining four entries, replace the oldest item.
+
+### Update profile, CV, or navigation
+
+- Profile data: `_config.yml` under `author:` (restart Jekyll after changes).
+- Public CV file: replace `files/Dan_Yoo_CV.pdf` with the current finished PDF.
+- CV and main navigation destinations: `_data/navigation.yml`.
+- Hero CTA destinations: `_pages/about.md`.
+
+Keep duplicated CV destinations synchronized.
+
+## JavaScript Maintenance
+
+Edit `assets/js/_main.js`, not `assets/js/main.min.js` by hand. Rebuild the bundle
+after source changes:
+
+```bash
+npm run build:js
+```
+
+The generated bundle is deployed by the static site, so source and bundle must be
+reviewed together.
 
 ## Testing
 
+Build and serve the Jekyll site in one terminal. The second config keeps CSS,
+JavaScript, and internal navigation on the local origin so tests never mix a
+local HTML build with production assets:
+
 ```bash
-# Start local server
-bundle exec jekyll serve -l -H localhost
-
-# Run Playwright overlap tests
-npx playwright test
-
-# Test viewports: 925, 1024, 1100, 1280, 1440px
+bundle exec jekyll serve -l -H localhost --config _config.yml,_config.local.yml
 ```
 
----
+Then run the Chromium suite in another terminal:
 
-## Known Decisions
+```bash
+npx playwright test
+```
 
-- **Susy grid kept but overridden**: Removing Susy entirely would require touching many files. The flexbox overrides (`float: none; width: auto;`) neutralize Susy at `$large+` without breaking sub-`$large` behavior.
-- **Custom CSS in `<style>` tag, not SCSS**: Keeps all customizations in one file (`custom.html`) for easy maintenance, avoids touching theme SCSS files that may be updated upstream.
-- **Bio color = link color**: `.author__bio` uses `var(--global-link-color)`, automatically adapts to light/dark mode.
-- **No profile image hover zoom**: Intentionally removed per preference.
+`tests/homepage-ui.spec.ts` verifies:
+
+- one H1, three research cards, two publication cards, and four timeline dates;
+- successfully loaded local publication images with meaningful alt text;
+- the corrected EvalAgent DOI, CC BY captions, and locally served CV PDF;
+- named hero CTAs and destination types;
+- no horizontal overflow at 320, 375, 600, 768, 924, 925, 1024, 1280, and 1440px;
+- wide and stacked card arrangements;
+- Contact, navigation, and theme keyboard operation and ARIA state;
+- persisted theme choice and synchronized browser theme color;
+- deterministic light/dark body-text contrast signals; and
+- visible content and disabled smooth motion under reduced-motion preference.
+
+`tests/sidebar-overlap.spec.ts` separately protects the 925px desktop-layout
+boundary and wider sidebar/content geometry.
+
+For a syntax-only test discovery check that does not require a running server:
+
+```bash
+npx playwright test --list
+```
+
+## Architectural Decisions
+
+- **Flexbox shell retained:** it avoids the prior Susy/fixed-sidebar overlap while
+  leaving upstream theme code largely intact.
+- **Homepage styles remain in the custom head include:** this isolates the visual
+  layer from upstream SCSS updates; a later extraction should be a deliberate
+  refactor with equivalent visual and browser-test coverage.
+- **Semantic HTML precedes animation:** sections, articles, figures, ordered news,
+  and native buttons work without JavaScript; scripts enhance theme and disclosure
+  state.
+- **Selected work stays compact:** publication filtering, carousels, parallax, and
+  scroll-reveal dependencies are intentionally deferred to keep maintenance and
+  motion complexity low.

@@ -9,6 +9,9 @@ let determineThemeSetting = () => {
   return (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") ? "system" : themeSetting;
 };
 
+const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)');
+const reducedMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Determine the computed theme, which can be "dark" or "light". If the theme setting is
 // "system", the computed theme is determined based on the user's system preference.
 let determineComputedTheme = () => {
@@ -16,39 +19,70 @@ let determineComputedTheme = () => {
   if (themeSetting != "system") {
     return themeSetting;
   }
-  return (userPref && userPref("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  return darkModePreference.matches ? "dark" : "light";
 };
 
-// detect OS/browser preference
-const browserPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+let updateThemeControls = (theme) => {
+  const isDark = theme === "dark";
+  const themeButton = document.getElementById("theme-toggle-button");
+  const themeIcon = document.getElementById("theme-icon");
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+
+  if (themeIcon) {
+    themeIcon.classList.toggle("fa-moon", isDark);
+    themeIcon.classList.toggle("fa-sun", !isDark);
+  }
+
+  if (themeButton) {
+    const label = isDark ? "Switch to light theme" : "Switch to dark theme";
+    themeButton.setAttribute("aria-label", label);
+    themeButton.setAttribute("aria-pressed", String(isDark));
+    themeButton.setAttribute("title", label);
+  }
+
+  if (themeColor) {
+    themeColor.setAttribute("content", isDark ? "#4a4a3a" : "#f0eee9");
+  }
+};
 
 // Set the theme on page load or when explicitly called
 let setTheme = (theme) => {
-  const use_theme =
+  const requestedTheme =
     theme ||
     localStorage.getItem("theme") ||
     $("html").attr("data-theme") ||
-    browserPref;
+    "system";
+  const computedTheme = requestedTheme === "system"
+    ? (darkModePreference.matches ? "dark" : "light")
+    : requestedTheme;
 
-  if (use_theme === "dark") {
+  if (computedTheme === "dark") {
     $("html").attr("data-theme", "dark");
-    $("#theme-icon").removeClass("fa-sun").addClass("fa-moon");
-  } else if (use_theme === "light") {
+  } else {
     $("html").removeAttr("data-theme");
-    $("#theme-icon").removeClass("fa-moon").addClass("fa-sun");
   }
+
+  updateThemeControls(computedTheme);
+  return computedTheme;
 };
 
 // Toggle the theme manually with icon animation
 var toggleTheme = () => {
   const icon = document.getElementById('theme-icon');
+  const currentTheme = $("html").attr("data-theme") === "dark" ? "dark" : "light";
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+  if (!icon || reducedMotionPreference.matches) {
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+    return;
+  }
+
   icon.classList.add('theme-icon-out');
 
   setTimeout(() => {
-    const current_theme = $("html").attr("data-theme");
-    const new_theme = current_theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", new_theme);
-    setTheme(new_theme);
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
 
     icon.classList.remove('theme-icon-out');
     icon.classList.add('theme-icon-in');
@@ -104,15 +138,46 @@ $(document).ready(function () {
 
   // If the user hasn't chosen a theme, follow the OS preference
   setTheme();
-  window.matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener("change", (e) => {
-          if (!localStorage.getItem("theme")) {
-            setTheme(e.matches ? "dark" : "light");
-          }
-        });
+  darkModePreference.addEventListener("change", (e) => {
+    if (determineThemeSetting() === "system") {
+      setTheme(e.matches ? "dark" : "light");
+    }
+  });
 
   // Enable the theme toggle
-  $('#theme-toggle').on('click', toggleTheme);
+  $('[data-theme-toggle]').on('click', toggleTheme);
+
+  // Keep the priority-navigation disclosure state available to assistive technology.
+  const $navToggle = $('[data-nav-toggle]');
+  const $hiddenNavLinks = $('#site-nav-hidden-links');
+  const closeNavDisclosure = () => {
+    $hiddenNavLinks.addClass('hidden');
+    $navToggle.removeClass('close').attr('aria-expanded', 'false').trigger('focus');
+  };
+  const syncNavDisclosure = () => {
+    const isExpanded = !$navToggle.hasClass('hidden') && !$hiddenNavLinks.hasClass('hidden');
+    $navToggle.attr('aria-expanded', String(isExpanded));
+  };
+  $navToggle.on('click', syncNavDisclosure);
+  $navToggle.on('keydown', function (event) {
+    if (event.key === 'Escape' && $(this).attr('aria-expanded') === 'true') {
+      closeNavDisclosure();
+    }
+  });
+  $hiddenNavLinks.on('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeNavDisclosure();
+    }
+  });
+  $(window).on('resize', syncNavDisclosure);
+  if (window.screen.orientation) {
+    window.screen.orientation.addEventListener('change', syncNavDisclosure);
+  }
+  $hiddenNavLinks.on('click', 'a', function () {
+    $hiddenNavLinks.addClass('hidden');
+    $navToggle.removeClass('close').attr('aria-expanded', 'false');
+  });
+  syncNavDisclosure();
 
   // Enable the sticky footer
   var bumpIt = function () {
@@ -132,23 +197,64 @@ $(document).ready(function () {
   // FitVids init
   fitvids();
 
-  // Follow menu drop down
-  $(".author__urls-wrapper button").on("click", function () {
-    $(".author__urls").fadeToggle("fast", function () { });
-    $(".author__urls-wrapper button").toggleClass("open");
+  // Contact menu disclosure
+  const $contactToggle = $("[data-contact-toggle]");
+  const $contactLinks = $("#author-contact-links");
+  const closeContactDisclosure = () => {
+    $contactToggle.attr("aria-expanded", "false").removeClass("open").trigger("focus");
+    $contactLinks.stop(true, true).hide();
+  };
+  $contactToggle.on("click", function () {
+    const willExpand = $(this).attr("aria-expanded") !== "true";
+    $(this).attr("aria-expanded", String(willExpand)).toggleClass("open", willExpand);
+    $contactLinks.stop(true, true);
+    if (reducedMotionPreference.matches) {
+      $contactLinks.toggle(willExpand);
+    } else if (willExpand) {
+      $contactLinks.fadeIn("fast");
+    } else {
+      $contactLinks.fadeOut("fast");
+    }
+  });
+  $contactToggle.on("keydown", function (event) {
+    if (event.key === "Escape" && $(this).attr("aria-expanded") === "true") {
+      closeContactDisclosure();
+    }
+  });
+  $contactLinks.on("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeContactDisclosure();
+    }
   });
 
-  // Restore the follow menu if toggled on a window resize
-  jQuery(window).on('resize', function () {
-    if ($('.author__urls.social-icons').css('display') == 'none' && $(window).width() >= scssLarge) {
-      $(".author__urls").css('display', 'block')
+  // Keep the responsive contact disclosure and its state synchronized.
+  const syncContactDisclosure = () => {
+    if ($(window).width() >= scssLarge) {
+      $contactLinks.stop(true, true).css("display", "block");
+      $contactToggle.attr("aria-expanded", "false").removeClass("open");
+    } else if ($contactToggle.attr("aria-expanded") !== "true") {
+      $contactLinks.stop(true, true).css("display", "none");
+    }
+  };
+  $(window).on('resize', syncContactDisclosure);
+  syncContactDisclosure();
+
+  // Scroll the site title to the top without overriding reduced-motion preferences.
+  $(".site-title-link").on("click", function (event) {
+    const currentPath = window.location.pathname.replace(/\/+$/, "");
+    const targetPath = new URL(this.href, window.location.href).pathname.replace(/\/+$/, "");
+    if (currentPath === targetPath) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: reducedMotionPreference.matches ? "auto" : "smooth" });
     }
   });
 
   // Init smooth scroll, this needs to be slightly more than then fixed masthead height
-  $("a").smoothScroll({
-    offset: -scssMastheadHeight,
-    preventDefault: false,
-  });
+  if (!reducedMotionPreference.matches) {
+    $("a").smoothScroll({
+      offset: -scssMastheadHeight,
+      preventDefault: false,
+    });
+  }
 
 });
