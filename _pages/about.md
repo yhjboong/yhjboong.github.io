@@ -54,7 +54,6 @@ redirect_from:
         <div class="publication-card__figure-frame">
           <img src="/images/pub/2026-iui-behavioral-fabric.jpeg" width="1920" height="1080" loading="lazy" decoding="async" alt="Values and preferences steer web agents along different shopping paths toward different headphone choices." />
         </div>
-        <figcaption class="publication-card__attribution"><a href="https://doi.org/10.1145/3742413.3789219">Figure 1 from the paper</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption>
       </figure>
       <div class="publication-card__body">
         <p class="publication-card__venue">IUI 2026</p>
@@ -70,7 +69,6 @@ redirect_from:
         <div class="publication-card__figure-frame">
           <img src="/images/pub/2026-iui-evalagent.webp" width="1600" height="805" loading="lazy" decoding="async" alt="EvalAgent workflow from configuring agent profiles through trajectory comparison, criteria-based judging, and explanations." />
         </div>
-        <figcaption class="publication-card__attribution"><a href="https://doi.org/10.1145/3742414.3795096">Figure 1 from the paper</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption>
       </figure>
       <div class="publication-card__body">
         <p class="publication-card__venue">IUI 2026 · Demo</p>

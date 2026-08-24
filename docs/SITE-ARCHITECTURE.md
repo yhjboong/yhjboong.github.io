@@ -61,7 +61,7 @@ The page shell is a centered flex container at the `$large` breakpoint:
 | --- | --- |
 | Below 925px | Single-column page and Contact disclosure button |
 | 925px and wider | Sticky 250px sidebar plus flexible page content |
-| 1400px and wider | Two publication cards appear side by side; each keeps its figure above the copy |
+| 1400px and wider | Each publication uses one full row with its figure left and copy right |
 | 700px and narrower | News date/content stack; compact horizontal padding |
 | 380px and narrower | Hero actions become a full-width vertical stack |
 
@@ -108,8 +108,7 @@ together.
 └── .publication-grid
     └── article.publication-card
         ├── figure.publication-card__figure
-        │   ├── image/frame
-        │   └── source/licence attribution
+        │   └── image/frame
         └── .publication-card__body
             ├── .publication-card__venue
             ├── h3
@@ -128,7 +127,6 @@ For every figure:
 - Keep the source local (`/images/...`) and use a web-sized format.
 - Write alt text that conveys the figure's essential meaning; generic text such as
   “paper figure” is not sufficient.
-- Keep visible figure/source and licence attribution when required.
 - Use `loading="lazy"` and `decoding="async"` for below-the-fold figures.
 - Preserve the card's figure/body class names when changing markup.
 
@@ -216,8 +214,7 @@ Light/dark component tokens are declared in `_includes/head/custom.html`:
 
 Prefer these variables and the existing global theme variables over fixed colors.
 The publication figure itself intentionally uses a white canvas because its
-paper graphics were authored for a light background; its attribution color must
-retain readable contrast on that canvas.
+paper graphics were authored for a light background.
 
 ## Content Maintenance
 
@@ -227,8 +224,7 @@ retain readable contrast on that canvas.
 2. Place an optimized main figure in `images/pub/`.
 3. Add one `.publication-card` to `_pages/about.md` using the component contract.
 4. Include venue, title, one-sentence contribution, complete author list, Paper
-   and DOI links, intrinsic image dimensions, descriptive alt text, and source/
-   licence attribution.
+   and DOI links, intrinsic image dimensions, and descriptive alt text.
 5. Update the expected card count in `tests/homepage-ui.spec.ts` only when the
    editorial decision to show more than two selected works is intentional.
 
@@ -284,7 +280,7 @@ npx playwright test
 
 - one H1, three research cards, two publication cards, and four timeline dates;
 - successfully loaded local publication images with meaningful alt text;
-- the corrected EvalAgent DOI and CC BY captions;
+- the corrected EvalAgent DOI and absence of redundant visible figure captions;
 - named hero CTAs and destination types;
 - no horizontal overflow at 320, 375, 600, 768, 924, 925, 1024, 1280, and 1440px;
 - wide and stacked card arrangements;

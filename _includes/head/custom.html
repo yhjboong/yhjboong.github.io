@@ -431,20 +431,6 @@
     object-fit: contain;
   }
 
-  .publication-card__attribution {
-    margin: 0 !important;
-    padding: 0.42rem 0.7rem;
-    color: #4b4b4b;
-    font-size: 0.68rem !important;
-    line-height: 1.35;
-    text-align: right;
-    background: #fff;
-  }
-
-  .publication-card__attribution a {
-    color: #415537;
-  }
-
   .publication-card__body {
     padding: clamp(1.15rem, 3vw, 1.55rem);
   }
@@ -673,9 +659,31 @@
   }
 
   @media (min-width: 1400px) {
-    .publication-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .publication-card {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 1.4rem;
       align-items: start;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .publication-card__figure {
+      align-self: start;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(42, 50, 38, 0.045);
+    }
+
+    .publication-card__body {
+      padding: 0.4rem 0;
+    }
+
+    .publication-card:hover {
+      box-shadow: none;
     }
   }
 
