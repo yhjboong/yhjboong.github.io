@@ -109,10 +109,11 @@ test.describe('homepage content contract', () => {
       expect(details.alt).not.toMatch(/^(image|figure|paper figure|publication figure)(\s+\d+)?$/i);
     }
 
-    await expect(page.locator('.publication-card__attribution')).toHaveCount(2);
-    await expect(page.locator('.publication-card__attribution a[href="https://creativecommons.org/licenses/by/4.0/"]')).toHaveCount(2);
+    await expect(page.locator('.publication-card__attribution')).toHaveCount(0);
+    await expect(page.getByText('Figure 1 from the paper')).toHaveCount(0);
+    await expect(page.getByText('CC BY 4.0')).toHaveCount(0);
     const evalAgentCard = page.locator('.publication-card').filter({ hasText: 'EvalAgent:' });
-    await expect(evalAgentCard.locator('a[href="https://doi.org/10.1145/3742414.3795096"]')).toHaveCount(2);
+    await expect(evalAgentCard.locator('a[href="https://doi.org/10.1145/3742414.3795096"]')).toHaveCount(1);
     await expect(page.locator('a[href*="3742414.3794774"]')).toHaveCount(0);
   });
 
@@ -181,7 +182,7 @@ test.describe('responsive card layout', () => {
     expect(narrowBoxes[2].y).toBeGreaterThan(narrowBoxes[1].y + narrowBoxes[1].height - 1);
   });
 
-  test('publication cards form a compact grid and keep figures above copy', async ({ page }) => {
+  test('publication cards use one row each with responsive figure placement', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await openHome(page);
 
@@ -192,15 +193,16 @@ test.describe('responsive card layout', () => {
         return { x: card.offsetLeft, y: card.offsetTop };
       }),
     );
-    expect(new Set(wideCards.map((box) => box.x)).size).toBe(2);
-    expect(Math.max(...wideCards.map((box) => box.y)) - Math.min(...wideCards.map((box) => box.y))).toBeLessThan(3);
+    expect(new Set(wideCards.map((box) => box.x)).size).toBe(1);
+    expect(wideCards[1].y).toBeGreaterThan(wideCards[0].y);
 
     for (const card of await cards.all()) {
       const figureBox = await card.locator('.publication-card__figure').boundingBox();
       const headingBox = await card.getByRole('heading').boundingBox();
       expect(figureBox).not.toBeNull();
       expect(headingBox).not.toBeNull();
-      expect(headingBox!.y).toBeGreaterThanOrEqual(figureBox!.y + figureBox!.height - 2);
+      expect(headingBox!.x).toBeGreaterThanOrEqual(figureBox!.x + figureBox!.width - 2);
+      expect(Math.abs(headingBox!.y - figureBox!.y)).toBeLessThan(120);
     }
 
     await page.setViewportSize({ width: 375, height: 900 });
