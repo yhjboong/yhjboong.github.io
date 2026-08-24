@@ -118,7 +118,7 @@ test.describe('homepage content contract', () => {
 
   test('hero calls to action are named and lead somewhere meaningful', async ({ page }) => {
     const actions = page.locator('.home-hero__actions a');
-    expect(await actions.count()).toBeGreaterThanOrEqual(2);
+    await expect(actions).toHaveCount(2);
 
     for (const action of await actions.all()) {
       await expect(action).toHaveAccessibleName(/\S+/);
@@ -133,15 +133,7 @@ test.describe('homepage content contract', () => {
     await expect(publicationsCta).toHaveCount(1);
     await expect(publicationsCta).toHaveAccessibleName(/publication/i);
     await expect(page.locator('.home-hero__actions a[href^="mailto:"]')).toHaveCount(1);
-    const cvCta = page.locator('.home-hero__actions a').filter({ hasText: /CV/i });
-    await expect(cvCta).toHaveCount(1);
-    await expect(cvCta).toHaveAttribute('href', '/files/Dan_Yoo_CV.pdf');
-    const cvResponse = await page.evaluate(async (href) => {
-      const response = await fetch(href, { method: 'HEAD' });
-      return { contentType: response.headers.get('content-type'), status: response.status };
-    }, await cvCta.getAttribute('href'));
-    expect(cvResponse.status).toBe(200);
-    expect(cvResponse.contentType).toContain('application/pdf');
+    await expect(page.getByRole('link', { name: /CV/i })).toHaveCount(0);
   });
 });
 
@@ -189,25 +181,34 @@ test.describe('responsive card layout', () => {
     expect(narrowBoxes[2].y).toBeGreaterThan(narrowBoxes[1].y + narrowBoxes[1].height - 1);
   });
 
-  test('publication figure and copy switch from side-by-side to stacked', async ({ page }) => {
+  test('publication cards form a compact grid and keep figures above copy', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await openHome(page);
 
     const cards = page.locator('.publication-grid > .publication-card');
+    const wideCards = await cards.evaluateAll((elements) =>
+      elements.map((element) => {
+        const card = element as HTMLElement;
+        return { x: card.offsetLeft, y: card.offsetTop };
+      }),
+    );
+    expect(new Set(wideCards.map((box) => box.x)).size).toBe(2);
+    expect(Math.max(...wideCards.map((box) => box.y)) - Math.min(...wideCards.map((box) => box.y))).toBeLessThan(3);
+
     for (const card of await cards.all()) {
-      const cardBox = await card.boundingBox();
       const figureBox = await card.locator('.publication-card__figure').boundingBox();
       const headingBox = await card.getByRole('heading').boundingBox();
-      expect(cardBox).not.toBeNull();
       expect(figureBox).not.toBeNull();
       expect(headingBox).not.toBeNull();
-      expect(Math.abs(figureBox!.y - cardBox!.y)).toBeLessThanOrEqual(2);
-      expect(figureBox!.x + figureBox!.width).toBeLessThanOrEqual(headingBox!.x + 2);
-      expect(headingBox!.y).toBeLessThan(figureBox!.y + figureBox!.height);
+      expect(headingBox!.y).toBeGreaterThanOrEqual(figureBox!.y + figureBox!.height - 2);
     }
 
     await page.setViewportSize({ width: 375, height: 900 });
     await openHome(page);
+    const narrowCards = await cards.evaluateAll((elements) =>
+      elements.map((element) => ({ x: (element as HTMLElement).offsetLeft })),
+    );
+    expect(new Set(narrowCards.map((box) => box.x)).size).toBe(1);
     for (const card of await cards.all()) {
       const figureBox = await card.locator('.publication-card__figure').boundingBox();
       const headingBox = await card.getByRole('heading').boundingBox();
