@@ -40,7 +40,6 @@ _sass/theme/                   Light and dark theme variables
 assets/js/
   _main.js                     Theme, disclosures, motion preference, sticky footer
   main.min.js                  Generated browser bundle
-files/Dan_Yoo_CV.pdf           Locally hosted public CV used by all CV links
 images/pub/                    Local publication figures
 tests/
   homepage-ui.spec.ts          Homepage, responsive, theme, and accessibility contract
@@ -62,7 +61,7 @@ The page shell is a centered flex container at the `$large` breakpoint:
 | --- | --- |
 | Below 925px | Single-column page and Contact disclosure button |
 | 925px and wider | Sticky 250px sidebar plus flexible page content |
-| 1100px and wider | Publication figure and copy appear side by side |
+| 1400px and wider | Two publication cards appear side by side; each keeps its figure above the copy |
 | 700px and narrower | News date/content stack; compact horizontal padding |
 | 380px and narrower | Hero actions become a full-width vertical stack |
 
@@ -247,8 +246,8 @@ high-signal milestones; when retaining four entries, replace the oldest item.
 ### Update profile, CV, or navigation
 
 - Profile data: `_config.yml` under `author:` (restart Jekyll after changes).
-- Public CV file: replace `files/Dan_Yoo_CV.pdf` with the current finished PDF.
-- CV and main navigation destinations: `_data/navigation.yml`.
+- CV routes and downloads are intentionally unpublished until they are ready to
+  be made public again. Main navigation destinations live in `_data/navigation.yml`.
 - Hero CTA destinations: `_pages/about.md`.
 
 Keep duplicated CV destinations synchronized.
@@ -285,7 +284,7 @@ npx playwright test
 
 - one H1, three research cards, two publication cards, and four timeline dates;
 - successfully loaded local publication images with meaningful alt text;
-- the corrected EvalAgent DOI, CC BY captions, and locally served CV PDF;
+- the corrected EvalAgent DOI and CC BY captions;
 - named hero CTAs and destination types;
 - no horizontal overflow at 320, 375, 600, 768, 924, 925, 1024, 1280, and 1440px;
 - wide and stacked card arrangements;

@@ -14,7 +14,6 @@ redirect_from:
   <p class="home-hero__advisor">Advised by <a href="https://jasonwunix.com/">Prof. Jason Wu</a>.</p>
   <nav class="home-hero__actions" aria-label="Profile actions">
     <a class="btn btn--primary" href="#publications">View Publications</a>
-    <a class="btn" href="/files/Dan_Yoo_CV.pdf">View CV</a>
     <a class="btn" href="mailto:yoo153@purdue.edu">Email Me</a>
   </nav>
 </header>
