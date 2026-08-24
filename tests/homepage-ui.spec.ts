@@ -195,10 +195,13 @@ test.describe('responsive card layout', () => {
 
     const cards = page.locator('.publication-grid > .publication-card');
     for (const card of await cards.all()) {
+      const cardBox = await card.boundingBox();
       const figureBox = await card.locator('.publication-card__figure').boundingBox();
       const headingBox = await card.getByRole('heading').boundingBox();
+      expect(cardBox).not.toBeNull();
       expect(figureBox).not.toBeNull();
       expect(headingBox).not.toBeNull();
+      expect(Math.abs(figureBox!.y - cardBox!.y)).toBeLessThanOrEqual(2);
       expect(figureBox!.x + figureBox!.width).toBeLessThanOrEqual(headingBox!.x + 2);
       expect(headingBox!.y).toBeLessThan(figureBox!.y + figureBox!.height);
     }

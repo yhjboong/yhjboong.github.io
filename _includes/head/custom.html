@@ -675,11 +675,12 @@
   @media (min-width: 1100px) {
     .publication-card {
       grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.1fr);
-      align-items: stretch;
+      align-items: start;
     }
 
     .publication-card__figure {
-      justify-content: center;
+      align-self: start;
+      justify-content: flex-start;
     }
   }
 
