@@ -89,7 +89,7 @@ redirect_from:
   <ol class="news-timeline">
     <li class="news-timeline__item">
       <time datetime="2026-08">Aug 2026</time>
-      <p class="news-timeline__content"><strong>Started my Ph.D. at Purdue University.</strong> I also joined CS 593: Graduate Human-Computer Interaction as a teaching assistant.</p>
+      <p class="news-timeline__content"><strong>Started my Ph.D. at Purdue University and joined the <a href="https://ciderlab.org/">CIDER Lab</a>.</strong> I also began serving as a teaching assistant for CS 593: Graduate Human-Computer Interaction.</p>
     </li>
     <li class="news-timeline__item">
       <time datetime="2026-05">May 2026</time>
