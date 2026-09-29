@@ -7,11 +7,10 @@ redirect_from:
 ---
 
 <header class="home-hero" aria-labelledby="home-hero-title">
-  <p class="home-hero__eyebrow">Purdue University · Computer Science</p>
-  <h1 id="home-hero-title">Human-centered AI agents, built to be understood.</h1>
-  <p class="home-hero__role">Ph.D. Student in Computer Science at Purdue University</p>
-  <p class="home-hero__summary home-hero__lead">I study how people and AI systems interact, how language models reason, and how we can evaluate intelligent agents in ways that reflect human values.</p>
-  <p class="home-hero__advisor">Advised by <a href="https://jasonwunix.com/">Prof. Jason Wu</a>.</p>
+  <h1 id="home-hero-title" class="visually-hidden">Dan (Hojun) Yoo</h1>
+  <p class="home-hero__role">Ph.D. Student in Computer Science at <a href="https://www.purdue.edu/">Purdue University</a></p>
+  <p class="home-hero__summary home-hero__lead">I study how people and AI systems interact, how language models reason, and how intelligent agents can be designed and evaluated to support the uniquely human ways we think, create, and make sense of the world.</p>
+  <p class="home-hero__advisor">Advised by <a href="https://jasonwunix.com/">Prof. Jason Wu</a> in Purdue's <a href="https://ciderlab.org/">CIDER Lab</a>.</p>
   <nav class="home-hero__actions" aria-label="Profile actions">
     <a class="btn btn--primary" href="#publications">View Publications</a>
     <a class="btn" href="mailto:yoo153@purdue.edu">Email Me</a>
@@ -19,13 +18,13 @@ redirect_from:
 </header>
 
 <div class="home-introduction">
-  <p>I received my B.S. in Computer Science, <em>cum laude</em>, from the <a href="https://www.nd.edu/">University of Notre Dame</a> in May 2026. My earlier research with <a href="https://toby.li/students/">SaNDwich Lab</a>, <a href="https://sites.nd.edu/xiangliang-zhang/people/">MINE Lab</a>, and the <a href="https://umich-foreseer.github.io/">FORESEER Group</a> spanned web-agent evaluation, value alignment, reasoning calibration, and benchmark analysis.</p>
+  <p>I received my B.S. in Computer Science from the <a href="https://www.nd.edu/">University of Notre Dame</a> in May 2026. My earlier research with <a href="https://toby.li/students/">SaNDwich Lab</a>, <a href="https://sites.nd.edu/xiangliang-zhang/people/">MINE Lab</a>, and the <a href="https://umich-foreseer.github.io/">FORESEER Group</a> spanned web-agent evaluation, value alignment, reasoning calibration, and benchmark analysis.</p>
 </div>
 
 <section id="research-interests" class="home-section" aria-labelledby="research-interests-title">
   <header class="home-section__header">
     <p class="home-section__eyebrow">Research</p>
-    <h2 id="research-interests-title">Research interests</h2>
+    <h2 id="research-interests-title" class="visually-hidden">Research interests</h2>
   </header>
   <div class="research-grid">
     <article class="research-card">
@@ -46,7 +45,7 @@ redirect_from:
 <section id="publications" class="home-section" aria-labelledby="publications-title">
   <header class="home-section__header">
     <p class="home-section__eyebrow">Selected work</p>
-    <h2 id="publications-title">Publications</h2>
+    <h2 id="publications-title" class="visually-hidden">Publications</h2>
   </header>
   <div class="publication-grid">
     <article class="publication-card">
@@ -84,7 +83,7 @@ redirect_from:
 <section id="news" class="home-section" aria-labelledby="news-title">
   <header class="home-section__header">
     <p class="home-section__eyebrow">Updates</p>
-    <h2 id="news-title">News</h2>
+    <h2 id="news-title" class="visually-hidden">News</h2>
   </header>
   <ol class="news-timeline">
     <li class="news-timeline__item">
