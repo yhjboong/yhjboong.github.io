@@ -67,7 +67,8 @@ test.describe('homepage content contract', () => {
 
   test('has one clear page heading and the expected content cards', async ({ page }) => {
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('.home-hero h1')).toBeVisible();
+    await expect(page.locator('.home-hero h1')).toHaveText(/Dan.*Yoo/i);
+    await expect(page.locator('.home-hero__role')).toBeVisible();
     await expect(page.locator('.research-grid > .research-card')).toHaveCount(3);
     await expect(page.locator('.publication-grid > .publication-card')).toHaveCount(2);
     await expect(page.locator('.news-timeline time')).toHaveCount(4);
@@ -135,6 +136,14 @@ test.describe('homepage content contract', () => {
     await expect(publicationsCta).toHaveAccessibleName(/publication/i);
     await expect(page.locator('.home-hero__actions a[href^="mailto:"]')).toHaveCount(1);
     await expect(page.getByRole('link', { name: /CV/i })).toHaveCount(0);
+  });
+
+  test('links to the stable Google Scholar profile URL', async ({ page }) => {
+    const scholar = page.getByRole('link', { name: 'Google Scholar' });
+    await expect(scholar).toHaveAttribute(
+      'href',
+      'https://scholar.google.com/citations?user=Q1y2o0cAAAAJ&hl=en',
+    );
   });
 });
 
